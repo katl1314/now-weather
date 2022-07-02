@@ -2,9 +2,9 @@ import { createStore } from "redux";
 
 const mapReducer = (state, action) => {
     if (!state) {
-        const lat = 0;
-        const lon = 0;
-        const city = "-";
+        const lat = 37.5666805;
+        const lon = 126.9784147;
+        const city = "서울";
         return {
             position: {
                 lat,

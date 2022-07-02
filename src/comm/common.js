@@ -1,7 +1,7 @@
 // import axios from "axios";
 
 export default class Common {
-    static setWeatherFetch(callback, url, city) {
+    static setFetch(callback, url, city) {
         fetch(url)
             .then((result) => {
                 if (!result.ok) {

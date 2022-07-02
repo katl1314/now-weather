@@ -5,7 +5,6 @@ import store from "../../store/store";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function () {
-    console.log(store.getState());
     const [weatherData, setWeatherData] = useState({
         city: store.getState().city,
         data: {},
@@ -30,6 +29,7 @@ export default function () {
                 });
             }
         };
+        // 키워드 검색하여 해당 지역의 위도와 경도를 추출후 store에 변경한다.
         places.keywordSearch(searchData, callback);
     };
 
@@ -44,13 +44,13 @@ export default function () {
             const { position, city } = store.getState();
             const { lat, lon } = position;
             const url = `${weatherURL}?lat=${lat}&lon=${lon}&lang=kr&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`;
-            Common.setWeatherFetch(setFetchCallback, url, city);
+            Common.setFetch(setFetchCallback, url, city);
         });
 
         const { position, city } = store.getState();
         const { lat, lon } = position;
         const url = `${weatherURL}?lat=${lat}&lon=${lon}&lang=kr&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`;
-        Common.setWeatherFetch(setFetchCallback, url, city);
+        Common.setFetch(setFetchCallback, url, city);
     }, []);
 
     return (
